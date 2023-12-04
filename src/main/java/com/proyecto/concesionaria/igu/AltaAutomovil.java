@@ -40,34 +40,62 @@ public class AltaAutomovil extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel2.setText("ALTA DE AUTOMOVILES");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\TodoCode\\auto_car-06.jpg")); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Modelo:");
 
         txtModelo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtModeloKeyTyped(evt);
+            }
+        });
 
         txtMarca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMarcaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setText("Marca:");
 
         txtMotor.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtMotor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMotorKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setText("Motor:");
 
         txtColor.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtColorKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setText("Color:");
 
         txtPatente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtPatente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPatenteKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setText("Patente:");
 
         txtCantPuerta.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtCantPuerta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantPuertaKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Cant. puertas:");
@@ -218,19 +246,19 @@ public class AltaAutomovil extends javax.swing.JFrame {
 
         control.agregarAutomovil(modelo, marca, motor, color, patente, cantPuertas);
 
-         // Se crea un JOptionPane (panel de opcion)
+        // Se crea un JOptionPane (panel de opcion)
         JOptionPane optionPane = new JOptionPane("Vehiculo agregado correctamente");//Mensaje a mostrar
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);//Tipo de mensaje
         JDialog dialog = optionPane.createDialog("Guardado exitoso");//Pantalla que va a aparecer
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
-        
+
         this.dispose();
 
         AltaAutomovil pantalla = new AltaAutomovil();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -249,6 +277,48 @@ public class AltaAutomovil extends javax.swing.JFrame {
         txtPatente.setText("");
         txtCantPuerta.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyTyped
+        if (txtModelo.getText().length() >= 15) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtModeloKeyTyped
+
+    private void txtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyTyped
+        if (txtMarca.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMarcaKeyTyped
+
+    private void txtMotorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMotorKeyTyped
+        if (txtMotor.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMotorKeyTyped
+
+    private void txtColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColorKeyTyped
+        if (txtColor.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtColorKeyTyped
+
+    private void txtPatenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatenteKeyTyped
+        if (txtPatente.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPatenteKeyTyped
+
+    private void txtCantPuertaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantPuertaKeyTyped
+        int key = evt.getKeyChar();
+      
+        if (key < '1' || key > '9') {
+            evt.consume();
+        }
+
+        if (txtCantPuerta.getText().length() == 1) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCantPuertaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
