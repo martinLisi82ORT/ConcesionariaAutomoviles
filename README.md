@@ -6,6 +6,8 @@ Implementacion de Modelo de Capas (Interfaz Grafica, Logica y Persistencia).
 ### Herramientas utilizadas:
 Netbeans - Java - MySQL
 
+<img src="{https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white}" />
+
 ### Ejemplos:
 
 ![Captura de pantalla 2023-12-03 220944](https://github.com/martinLisi82ORT/ConcesionariaAutomoviles/assets/111402719/58f06165-3259-4947-808f-8da8e6ac3315)
