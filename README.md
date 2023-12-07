@@ -5,7 +5,8 @@
 Implementacion de Modelo de Capas (Interfaz Grafica, Logica y Persistencia).
 
 ### Herramientas utilizadas:
-Java - MySQL - Netbeans 
+Java | MySQL | Netbeans 
+
 
 <div align="center">
 <img width="60" height="30" src="https://elblogdecodigo.files.wordpress.com/2014/12/java_logo.png" />
