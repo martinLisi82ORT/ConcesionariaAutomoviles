@@ -249,14 +249,20 @@ public class ModifAuto extends javax.swing.JFrame {
         String patente = txtPatente.getText();
         int cantPuertas = Integer.parseInt(txtCantPuerta.getText());
 
-        control.modificarAuto(auto, modelo, marca, motor, color, patente, cantPuertas);
+        boolean validacion = validarCampos(modelo, marca, motor, color, patente);
 
-        mostrarMensaje("Edicion realizada correctamente", "Info", "Edicion Exitosa");
-        ConsultaAutomovil consul = new ConsultaAutomovil();
-        consul.setVisible(true);
-        consul.setLocationRelativeTo(null);
+        if (validacion) {
+            control.modificarAuto(auto, modelo, marca, motor, color, patente, cantPuertas);
 
-        this.dispose();
+            mostrarMensaje("Edicion realizada correctamente", "Info", "Edicion Exitosa");
+            ConsultaAutomovil consul = new ConsultaAutomovil();
+            consul.setVisible(true);
+            consul.setLocationRelativeTo(null);
+
+            this.dispose();
+        } else {
+            mostrarMensaje("Debe completar todos los campos", "Error", "Error Edicion");
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -276,6 +282,33 @@ public class ModifAuto extends javax.swing.JFrame {
         txtCantPuerta.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void cargarDatosAuto(int idAuto) {
+
+        // Se busca auto en BD
+        auto = control.traerAutos(idAuto);
+        // Settea valores en el form
+        txtModelo.setText(auto.getModelo());
+        txtMarca.setText(auto.getMarca());
+        txtMotor.setText(auto.getMotor());
+        txtColor.setText(auto.getColor());
+        txtPatente.setText(auto.getPatente());
+        txtCantPuerta.setText(String.valueOf(auto.getCantPuertas()));
+    }
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        // Se crea un JOptionPane (panel de opcion)
+        JOptionPane optionPane = new JOptionPane(mensaje);//Mensaje a mostrar
+        if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);//Tipo de mensaje
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);//Tipo de mensaje
+        }
+
+        JDialog dialog = optionPane.createDialog(titulo);//Pantalla que va a aparecer
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+
     private void txtModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyTyped
         if (txtModelo.getText().length() >= 15) {
             evt.consume();
@@ -283,7 +316,7 @@ public class ModifAuto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtModeloKeyTyped
 
     private void txtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyTyped
-        if (txtMarca.getText().length() >= 10) {
+        if (txtMarca.getText().length() >= 15) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMarcaKeyTyped
@@ -318,6 +351,15 @@ public class ModifAuto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCantPuertaKeyTyped
 
+    private boolean validarCampos(String modelo, String marca, String motor, String color, String patente) {
+        boolean validar = false;
+
+        if (!modelo.isEmpty() && !marca.isEmpty() && !motor.isEmpty() && !color.isEmpty() && !patente.isEmpty()) {
+            validar = true;
+        }
+        return validar;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
@@ -339,32 +381,5 @@ public class ModifAuto extends javax.swing.JFrame {
     private javax.swing.JTextField txtMotor;
     private javax.swing.JTextField txtPatente;
     // End of variables declaration//GEN-END:variables
-
-    private void cargarDatosAuto(int idAuto) {
-
-        // Se busca auto en BD
-        auto = control.traerAutos(idAuto);
-        // Settea valores en el form
-        txtModelo.setText(auto.getModelo());
-        txtMarca.setText(auto.getMarca());
-        txtMotor.setText(auto.getMotor());
-        txtColor.setText(auto.getColor());
-        txtPatente.setText(auto.getPatente());
-        txtCantPuerta.setText(String.valueOf(auto.getCantPuertas()));
-    }
-
-    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
-        // Se crea un JOptionPane (panel de opcion)
-        JOptionPane optionPane = new JOptionPane(mensaje);//Mensaje a mostrar
-        if (tipo.equals("Info")) {
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);//Tipo de mensaje
-        } else if (tipo.equals("Error")) {
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);//Tipo de mensaje
-        }
-
-        JDialog dialog = optionPane.createDialog(titulo);//Pantalla que va a aparecer
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
 
 }

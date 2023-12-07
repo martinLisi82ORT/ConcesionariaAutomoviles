@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -190,6 +193,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtModeloActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtModeloKeyTyped"/>
           </Events>
         </Component>
@@ -254,6 +258,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPatenteActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPatenteKeyTyped"/>
           </Events>
         </Component>
@@ -272,6 +277,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCantPuertaActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCantPuertaKeyTyped"/>
           </Events>
         </Component>
@@ -286,7 +292,7 @@
         <Component class="javax.swing.JButton" name="btnAgregar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
@@ -297,7 +303,7 @@
         <Component class="javax.swing.JButton" name="btnVolver">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
@@ -308,7 +314,7 @@
         <Component class="javax.swing.JButton" name="btnLimpiar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>

@@ -36,6 +36,11 @@ public class AltaAutomovil extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel2.setText("ALTA DE AUTOMOVILES");
@@ -44,6 +49,11 @@ public class AltaAutomovil extends javax.swing.JFrame {
         jLabel3.setText("Modelo:");
 
         txtModelo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloActionPerformed(evt);
+            }
+        });
         txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtModeloKeyTyped(evt);
@@ -81,6 +91,11 @@ public class AltaAutomovil extends javax.swing.JFrame {
         jLabel6.setText("Color:");
 
         txtPatente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtPatente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPatenteActionPerformed(evt);
+            }
+        });
         txtPatente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPatenteKeyTyped(evt);
@@ -91,6 +106,11 @@ public class AltaAutomovil extends javax.swing.JFrame {
         jLabel7.setText("Patente:");
 
         txtCantPuerta.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtCantPuerta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantPuertaActionPerformed(evt);
+            }
+        });
         txtCantPuerta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCantPuertaKeyTyped(evt);
@@ -100,7 +120,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Cant. puertas:");
 
-        btnAgregar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +128,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
             }
         });
 
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnVolver.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +136,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,21 +264,22 @@ public class AltaAutomovil extends javax.swing.JFrame {
         String patente = txtPatente.getText();
         int cantPuertas = Integer.parseInt(txtCantPuerta.getText());
 
-        control.agregarAutomovil(modelo, marca, motor, color, patente, cantPuertas);
+        boolean validacion = validarCampos(modelo, marca, motor, color, patente);
 
-        // Se crea un JOptionPane (panel de opcion)
-        JOptionPane optionPane = new JOptionPane("Vehiculo agregado correctamente");//Mensaje a mostrar
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);//Tipo de mensaje
-        JDialog dialog = optionPane.createDialog("Guardado exitoso");//Pantalla que va a aparecer
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
+        if (validacion) {
+            control.agregarAutomovil(modelo, marca, motor, color, patente, cantPuertas);
 
-        this.dispose();
+            // Se crea un JOptionPane (panel de opcion)
+            mostrarMensaje("Vehiculo agregado correctamente", "Info", "Guardado exitoso");
+            this.dispose();
 
-        AltaAutomovil pantalla = new AltaAutomovil();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+            AltaAutomovil pantalla = new AltaAutomovil();
+            pantalla.setVisible(true);
+            pantalla.setLocationRelativeTo(null);
 
+        } else {
+            mostrarMensaje("Debe completar todos los campos", "Error", "Error Alta");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -275,7 +296,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
         txtMotor.setText("");
         txtColor.setText("");
         txtPatente.setText("");
-        txtCantPuerta.setText("");
+        txtCantPuerta.setText("1");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyTyped
@@ -285,7 +306,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtModeloKeyTyped
 
     private void txtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyTyped
-        if (txtMarca.getText().length() >= 10) {
+        if (txtMarca.getText().length() >= 15) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMarcaKeyTyped
@@ -310,7 +331,7 @@ public class AltaAutomovil extends javax.swing.JFrame {
 
     private void txtCantPuertaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantPuertaKeyTyped
         int key = evt.getKeyChar();
-      
+
         if (key < '1' || key > '9') {
             evt.consume();
         }
@@ -319,6 +340,46 @@ public class AltaAutomovil extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtCantPuertaKeyTyped
+
+    private boolean validarCampos(String modelo, String marca, String motor, String color, String patente) {
+        boolean validar = false;
+
+        if (!modelo.isEmpty() && !marca.isEmpty() && !motor.isEmpty() && !color.isEmpty() && !patente.isEmpty()) {
+            validar = true;
+        }
+        return validar;
+    }
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        // Se crea un JOptionPane (panel de opcion)
+        JOptionPane optionPane = new JOptionPane(mensaje);//Mensaje a mostrar
+        if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);//Tipo de mensaje
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);//Tipo de mensaje
+        }
+
+        JDialog dialog = optionPane.createDialog(titulo);//Pantalla que va a aparecer
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+
+
+    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeloActionPerformed
+
+    private void txtPatenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatenteActionPerformed
+
+    private void txtCantPuertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantPuertaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantPuertaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtCantPuerta.setText("1");
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

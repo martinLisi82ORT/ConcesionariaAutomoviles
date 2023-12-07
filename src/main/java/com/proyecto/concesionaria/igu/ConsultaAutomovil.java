@@ -53,7 +53,7 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaAutos);
 
-        btnEliminar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +61,7 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
             }
         });
 
-        btnVolver.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +69,7 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

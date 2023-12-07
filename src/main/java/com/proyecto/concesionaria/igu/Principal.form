@@ -90,16 +90,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Usuario\Downloads\TodoCode\auto_car-06.jpg"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnConsulta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Tahoma" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consulta, Edicion y Baja"/>
           </Properties>
@@ -110,7 +105,7 @@
         <Component class="javax.swing.JButton" name="btnSalir">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Tahoma" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -121,7 +116,7 @@
         <Component class="javax.swing.JButton" name="btnAltaAuto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="0"/>
+              <Font name="Tahoma" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Alta Automoviles"/>
           </Properties>
